@@ -1,0 +1,107 @@
+[
+  {
+    "id": "getting-started",
+    "title": "Getting Started with Manju",
+    "content": "Manju is a members-only job board for IIT and IIM alumni. Sign in with your institute email to browse senior roles (₹40 LPA+) at India's top companies. Your profile is verified by your institute roll number. Browse jobs, save favorites, apply with referrals from alumni already inside companies, and track your applications in real-time."
+  },
+  {
+    "id": "how-to-apply",
+    "title": "How to Apply for a Job",
+    "content": "To apply for a job: 1) Click on a job listing to view details. 2) Click 'Apply with Manju' button. 3) Step 1: Confirm your profile snapshot (name, title, experience, institute). 4) Step 2: Write a cover note (40-1800 words) or use 'Draft for me' AI feature. 5) Step 3: Optional - select alumni referrals who work at the company. 6) Step 4: Review and send. Your application is submitted and recruiters see your status progression."
+  },
+  {
+    "id": "referral-requests",
+    "title": "Understanding Referral Requests",
+    "content": "When you apply for a job and select alumni referrals, they receive a 'Refer this person' request via email. They can accept, view your profile, or reply with feedback - all with one tap. The referral request shows their response status: pending, viewed, accepted, or replied. Alumni who accept your referral request can push your application to the hiring manager. Most respond within 24 hours."
+  },
+  {
+    "id": "job-search-filters",
+    "title": "How to Search and Filter Jobs",
+    "content": "On the Jobs page: Use the search bar to find roles or companies by name. Filter by: Function (Product, Engineering, Strategy, etc.), Experience level (3-5 yrs, 5-8 yrs, 8+ yrs), Location (Bengaluru, Mumbai, Remote, etc.), Work mode (On-site, Hybrid, Remote), Compensation (use slider to set range ₹40-120 LPA+). Toggle 'Has alumni' to see only roles where your batch is already working. Sort by: Match score (default), Posted date, or Compensation."
+  },
+  {
+    "id": "saved-jobs",
+    "title": "Saving and Managing Jobs",
+    "content": "Click the 'Save' (☆) button on any job to add it to your saved list. Saved jobs appear in the 'Saved' column of your Tracker. You can unsave anytime by clicking '★ Saved'. Your saved jobs are synced across devices. Use saved jobs to build a shortlist before applying. Saved jobs expire after 30 days of inactivity."
+  },
+  {
+    "id": "application-tracker",
+    "title": "Using the Application Tracker",
+    "content": "The Tracker shows your job applications in a Kanban board with 5 stages: Saved (bookmarked jobs), Applied (submitted), In review (recruiter viewing), Interviewing (active rounds), Offer (final stage). Move cards between stages by clicking 'Move →' or '← Move'. Only recruiters see your status when you reach 'Interviewing' stage. Export your tracker as CSV anytime. The board shows interview dates, recruiter activity, and referral status."
+  },
+  {
+    "id": "profile-completeness",
+    "title": "Completing Your Profile",
+    "content": "Your profile completeness % shows how complete your Manju profile is. Quick wins to boost completeness: Add references from 2 batchmates (+8%), Upload latest resume PDF (+5%), Set salary expectations (+3%). Edit your profile by clicking 'Edit profile' to update: Name, Current title & company, Location, Experience (add roles with descriptions), Education, Skills. A complete profile increases your chances of getting referrals. Manju can render your profile into a clean ATS-ready PDF resume."
+  },
+  {
+    "id": "alumni-network",
+    "title": "Leveraging Your Alumni Network",
+    "content": "Manju surfaces alumni from your institute already working at companies you're interested in. When applying, select up to 3 alumni referrals. They'll receive a notification and can refer you to the hiring manager with one tap. Check the 'Referral activity' section on your home page to see who's accepted, viewed, or replied to your requests. Alumni referrals significantly increase interview chances. You can ask alumni for feedback even after they decline."
+  },
+  {
+    "id": "cover-note-tips",
+    "title": "Writing Effective Cover Notes",
+    "content": "Your cover note (40-1800 words) is the first thing hiring managers read. Tips: 1) Start with what attracted you to the role. 2) Connect your background to their specific needs. 3) Keep it to 2 paragraphs. 4) Use 'Draft for me' AI feature to get a starter based on your profile and job description. 5) Always personalize before sending. 6) Mention specific achievements relevant to the role. Good cover notes increase your chances of getting interviewed by 3-5x."
+  },
+  {
+    "id": "interview-rounds",
+    "title": "Tracking Interview Rounds",
+    "content": "Once you move an application to 'Interviewing' stage, recruiters can schedule interview rounds. The tracker shows: Round number, Round type (phone, code, system design, etc.), Scheduled date & time, Interviewer name, Topics covered. After each round, provide feedback to help yourself remember details. Most positions have 2-4 rounds. You can update your availability for interviews in your profile settings. Request reschedules if needed via the tracker interface."
+  },
+  {
+    "id": "set-your-status",
+    "title": "Setting Your Job Search Status",
+    "content": "Set your status to signal your availability to recruiters. Options: 'Open to conversations' (actively looking), 'Actively interviewing' (in process with multiple companies), 'In talks with an offer' (close to accepting), 'Not looking' (hidden from recruiters). Update your status anytime from the home page 'Set status' button. Your status is visible to recruiters and alumni when they view your profile. It helps them understand your urgency and respond accordingly."
+  },
+  {
+    "id": "matching-algorithm",
+    "title": "How Manju Matches You with Roles",
+    "content": "Manju's match score (0-100%) is calculated using: Your profile completeness, experience level vs role requirements, skills match with job description, location preferences, compensation expectations, company fit (alumni already there), role function match. Higher match = better fit. Jobs with high alumni presence in your batch get boosted. The algorithm learns from your saved and applied roles to improve recommendations over time. Check your profile to boost your match score."
+  },
+  {
+    "id": "company-pages",
+    "title": "Exploring Company Pages",
+    "content": "Click on any company to see: All open roles at that company, Alumni from your batch already working there, Average salary at that company, Company culture insights from reviews, Total headcount hiring. See a list of alumni and their roles within the company. Filter by role or seniority level. Company pages show hiring trends and what roles companies are focusing on this quarter. Use company pages to plan your applications."
+  },
+  {
+    "id": "mobile-app-guide",
+    "title": "Using Manju on Mobile",
+    "content": "Manju is fully mobile-responsive and works on iOS and Android browsers. All features available: Browse jobs, save/apply, manage referrals, update profile, track applications. Mobile-optimized: Smaller screens show 1-2 job columns instead of 3. Navigation menu collapses into hamburger icon. Touch-friendly buttons for easy applying. Sync across devices: Changes on mobile instantly reflect on desktop and vice versa. Download Manju as a home screen app for faster access."
+  },
+  {
+    "id": "ai-draft-feature",
+    "title": "Using AI to Draft Your Cover Note",
+    "content": "During application step 2 (cover note), click 'Draft for me' button. AI generates a personalized cover note using: Your profile (experience, skills, achievements), Job description details, Your career goals. The draft is unique to that role and company. Review and edit before submitting - always personalize. AI drafts are ~370 words and follow professional tone. You can regenerate if not satisfied. Word count shows progress toward 1800-word limit."
+  },
+  {
+    "id": "privacy-verification",
+    "title": "Privacy and Verification",
+    "content": "Manju verifies all members via institute roll numbers. Your data is encrypted and stored securely. Only verified alumni can access the platform. Recruiters see: Name, Title, Location, Experience, Skills, Match score. They do NOT see: Email, Phone, Home address. You control what's visible in your profile. Referral requests show your profile to alumni via email. You can block or report any user. Manju complies with data protection laws and doesn't sell user data."
+  },
+  {
+    "id": "troubleshooting",
+    "title": "Common Issues and Solutions",
+    "content": "Issue: Can't sign in? Check your institute email is registered. Forgot password? Use 'Forgot password' link. Issue: Application not sending? Ensure cover note is 40+ words. Issue: Referrals not responding? Follow up after 3 days or select different alumni. Issue: Match score too low? Complete your profile and add more skills. Issue: Can't export tracker? Try a different browser or refresh the page. Need help? Use the chat assistant or contact support@manju.com."
+  },
+  {
+    "id": "compensation-expectations",
+    "title": "Setting Compensation Expectations",
+    "content": "In your profile, set your compensation expectations in lakhs (₹ LPA). This helps recruiters match you with roles in your range. Manju shows salary ranges for all roles. Compensation on Manju typically ranges from ₹40 LPA for mid-level roles to ₹1.2+ Cr for VP/MD positions. During interviews, be prepared to discuss: Current compensation, Expected compensation, What you're optimizing for (growth, learning, team, etc.). Negotiate after offer stage, not during applications."
+  },
+  {
+    "id": "experience-entry",
+    "title": "Adding Work Experience",
+    "content": "In your profile edit mode, click '+ Add role' to add work experience. Enter: Job title (e.g., Senior Product Manager), Company name, Location, Dates (e.g., 2020 – 2024), Description (2-3 sentences about your role and impact). Examples of good descriptions: 'Led 5-person team building recommendation engine, increased engagement by 28%' or 'Owned backend services for driver allocation, reduced latency by 38%'. Strong experience descriptions increase your match score and referral acceptance rate."
+  },
+  {
+    "id": "skills-management",
+    "title": "Building Your Skills Profile",
+    "content": "In edit mode, click '+ Add' under Skills to add skills you want to highlight. Popular skills: Product Thinking, System Design, Python, Go, Distributed Systems, SQL, Kafka, Redis, gRPC, ML Basics, Team Leadership, Financial Modeling, etc. Add skills relevant to roles you're applying for. Recruiters filter by skills when searching. Your top 10 skills appear in your public profile. Update skills quarterly as you learn new ones. Remove outdated skills to keep profile relevant."
+  },
+  {
+    "id": "batch-network",
+    "title": "Finding Your Batch on Manju",
+    "content": "Manju connects you with alumni from your institute batch. On job pages, see 'X alumni in this role' - click to see their names and contact them. Batch members can see each other's profiles and provide referrals. Your batch year (e.g., '18, '20) appears in your profile. Manju shows how many alumni from your batch work at each company. This network is your biggest advantage - use it. Alumni from your batch are most likely to refer you."
+  }
+]
