@@ -333,7 +333,11 @@ function PSignIn() {
     };
 
     window.addEventListener('message', onMessage);
-    window.open('#/google-auth', 'Google Sign In', `width=${width},height=${height},left=${left},top=${top},scrollbars=no,resizable=no`);
+    const popupUrl = `${window.location.origin}${window.location.pathname}#/google-auth`;
+    const popup = window.open(popupUrl, 'Google Sign In', `width=${width},height=${height},left=${left},top=${top},scrollbars=no,resizable=no`);
+    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+      dispatch({type:'AUTH_ERROR', error:'Popup blocked! Please allow popups for this site in your browser to sign in with Google.'});
+    }
   };
 
   const openLinkedInAuth = () => {
@@ -379,7 +383,11 @@ function PSignIn() {
     };
 
     window.addEventListener('message', onMessage);
-    window.open('#/linkedin-auth', 'LinkedIn Sign In', `width=${width},height=${height},left=${left},top=${top},scrollbars=no,resizable=no`);
+    const popupUrl = `${window.location.origin}${window.location.pathname}#/linkedin-auth`;
+    const popup = window.open(popupUrl, 'LinkedIn Sign In', `width=${width},height=${height},left=${left},top=${top},scrollbars=no,resizable=no`);
+    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+      dispatch({type:'AUTH_ERROR', error:'Popup blocked! Please allow popups for this site in your browser to sign in with LinkedIn.'});
+    }
   };
 
   return (
