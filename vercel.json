@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/chat",
+      "destination": "https://YOUR-AGENT-SERVICE-URL.railway.app/api/chat"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://YOUR-BACKEND-API-URL.railway.app/api/:path*"
+    }
+  ]
+}

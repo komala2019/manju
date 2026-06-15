@@ -16,7 +16,7 @@ window.chatService = {
       };
     }
     try {
-      const agentBase = window.MJ_AGENT_BASE || `http://${window.location.hostname}:3002`;
+      const agentBase = window.MJ_AGENT_BASE === '' ? '' : (window.MJ_AGENT_BASE || `http://${window.location.hostname}:3002`);
       const res = await fetch(`${agentBase}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

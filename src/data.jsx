@@ -14,6 +14,7 @@ window.MJ_AGENT_BASE = localStorage.getItem('MJ_AGENT_BASE') || (
 
 const MJ_API = {
   toString() {
+    if (window.MJ_API_BASE === '') return '/api';
     return (window.MJ_API_BASE || `http://${window.location.hostname}:5200`) + '/api';
   }
 };
@@ -188,7 +189,7 @@ window.MJ_api = {
         _accessToken = 'mock_admin_token';
         localStorage.setItem('manju-access-token', _accessToken);
         localStorage.setItem('manju-user-id', '2');
-        const adminUser = { id: 2, email: 'admin@manju.in', name: 'Admin', role: 'admin', completeness: 100, experience: '[]', education: '[]', skills: '[]' };
+        const adminUser = { id: 2, email: 'admin@manju.in', name: 'Admin', role: 'admin', completeness: 100, experience: [], education: [], skills: [] };
         window.MJ.MJ_USER = adminUser;
         window.MJ.MJ_PROFILE = adminUser;
         return adminUser;
@@ -197,7 +198,7 @@ window.MJ_api = {
         _accessToken = 'mock_recruiter_token';
         localStorage.setItem('manju-access-token', _accessToken);
         localStorage.setItem('manju-user-id', '3');
-        const recruiterUser = { id: 3, email: 'recruiter@swiggy.com', name: 'Swiggy Recruiter', role: 'recruiter', recruiterCompany: 'Swiggy', completeness: 100, experience: '[]', education: '[]', skills: '[]' };
+        const recruiterUser = { id: 3, email: 'recruiter@swiggy.com', name: 'Swiggy Recruiter', role: 'recruiter', recruiterCompany: 'Swiggy', completeness: 100, experience: [], education: [], skills: [] };
         window.MJ.MJ_USER = recruiterUser;
         window.MJ.MJ_PROFILE = recruiterUser;
         return recruiterUser;
@@ -248,10 +249,10 @@ window.MJ_api = {
         location: location || 'Bengaluru',
         avatarColor: '#2D6BE4',
         completeness: 30,
-        experience: '[]',
-        education: '[]',
-        skills: '[]',
-        preferences: '{"roles":[],"locations":[],"comp":""}',
+        experience: [],
+        education: [],
+        skills: [],
+        preferences: { roles: [], locations: [], comp: "" },
         role: 'candidate',
       };
       _accessToken = 'mock_signup_token';
@@ -303,10 +304,10 @@ window.MJ_api = {
         location: 'Bengaluru',
         avatarColor: '#2D6BE4',
         completeness: 30,
-        experience: '[]',
-        education: '[]',
-        skills: '[]',
-        preferences: '{"roles":[],"locations":[],"comp":""}',
+        experience: [],
+        education: [],
+        skills: [],
+        preferences: { roles: [], locations: [], comp: "" },
         role: 'candidate',
       };
       _accessToken = 'mock_google_token';
@@ -358,10 +359,10 @@ window.MJ_api = {
         location: 'Bengaluru',
         avatarColor: '#0A66C2',
         completeness: 30,
-        experience: '[]',
-        education: '[]',
-        skills: '[]',
-        preferences: '{"roles":[],"locations":[],"comp":""}',
+        experience: [],
+        education: [],
+        skills: [],
+        preferences: { roles: [], locations: [], comp: "" },
         role: 'candidate',
       };
       _accessToken = 'mock_linkedin_token';
