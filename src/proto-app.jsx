@@ -3,6 +3,18 @@
 // Make chat service available globally (calls the integrated agent service)
 window.chatService = {
   async sendMessage(message, history = [], persona = null) {
+    if (!window.MJ || !window.MJ._fromApi) {
+      await new Promise(r => setTimeout(r, 800)); // Simulate network latency
+      return {
+        success: true,
+        route: 'smalltalk',
+        model: 'prototype-fallback',
+        answer: "Hi! I am the **Manju Assistant**.\n\nSince this prototype is running in *offline fallback mode*, I cannot reach the live AI Agent Service. However, you can still search and save jobs, apply for roles, ask for referrals, and update your profile directly in the prototype interface!",
+        confidence: 100,
+        context: [],
+        suggestions: ["How do I edit my profile?", "How do I apply for jobs?", "How do I ask for referrals?"]
+      };
+    }
     try {
       const agentBase = window.MJ_AGENT_BASE || `http://${window.location.hostname}:3002`;
       const res = await fetch(`${agentBase}/api/chat`, {

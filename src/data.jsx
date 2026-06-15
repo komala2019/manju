@@ -183,6 +183,32 @@ window.MJ_load = async function() {
 // ─── Write helpers — called by proto-core.jsx on state changes ────────────────
 window.MJ_api = {
   login: async (email, password) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      if (email === 'admin@manju.in') {
+        _accessToken = 'mock_admin_token';
+        localStorage.setItem('manju-access-token', _accessToken);
+        localStorage.setItem('manju-user-id', '2');
+        const adminUser = { id: 2, email: 'admin@manju.in', name: 'Admin', role: 'admin', completeness: 100, experience: '[]', education: '[]', skills: '[]' };
+        window.MJ.MJ_USER = adminUser;
+        window.MJ.MJ_PROFILE = adminUser;
+        return adminUser;
+      }
+      if (email === 'recruiter@swiggy.com') {
+        _accessToken = 'mock_recruiter_token';
+        localStorage.setItem('manju-access-token', _accessToken);
+        localStorage.setItem('manju-user-id', '3');
+        const recruiterUser = { id: 3, email: 'recruiter@swiggy.com', name: 'Swiggy Recruiter', role: 'recruiter', recruiterCompany: 'Swiggy', completeness: 100, experience: '[]', education: '[]', skills: '[]' };
+        window.MJ.MJ_USER = recruiterUser;
+        window.MJ.MJ_PROFILE = recruiterUser;
+        return recruiterUser;
+      }
+      _accessToken = 'mock_user_token';
+      localStorage.setItem('manju-access-token', _accessToken);
+      localStorage.setItem('manju-user-id', '1');
+      window.MJ.MJ_USER = FALLBACK_USER;
+      window.MJ.MJ_PROFILE = FALLBACK_USER;
+      return FALLBACK_USER;
+    }
     try {
       const res = await fetch(`${MJ_API}/auth/login`, {
         method: 'POST',
@@ -207,6 +233,34 @@ window.MJ_api = {
   },
   
   signup: async (email, password, name, institute, batch, location) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      const mockUser = {
+        id: 999,
+        email,
+        name,
+        first: name.split(' ')[0] || '',
+        last: name.split(' ')[1] || '',
+        title: 'Alumnus / Member',
+        current: '',
+        institute: institute || 'IIT Bombay',
+        instituteShort: institute ? institute.substring(0, 5) : 'IIT B',
+        batch: batch || '2018',
+        location: location || 'Bengaluru',
+        avatarColor: '#2D6BE4',
+        completeness: 30,
+        experience: '[]',
+        education: '[]',
+        skills: '[]',
+        preferences: '{"roles":[],"locations":[],"comp":""}',
+        role: 'candidate',
+      };
+      _accessToken = 'mock_signup_token';
+      localStorage.setItem('manju-access-token', _accessToken);
+      localStorage.setItem('manju-user-id', '999');
+      window.MJ.MJ_USER = mockUser;
+      window.MJ.MJ_PROFILE = mockUser;
+      return { accessToken: 'mock_signup_token', refreshToken: 'mock_refresh', user: mockUser };
+    }
     try {
       const res = await fetch(`${MJ_API}/auth/signup`, {
         method: 'POST',
@@ -231,6 +285,37 @@ window.MJ_api = {
   },
 
   googleLogin: async (idToken) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      const parts = idToken.split('|');
+      const email = parts[1] || 'google.user@gmail.com';
+      const name = parts[2] || 'Google User';
+      const mockUser = {
+        id: 888,
+        email,
+        name,
+        first: name.split(' ')[0] || '',
+        last: name.split(' ')[1] || '',
+        title: 'Alumnus / Member',
+        current: '',
+        institute: 'IIT Bombay',
+        instituteShort: 'IIT B',
+        batch: '2018',
+        location: 'Bengaluru',
+        avatarColor: '#2D6BE4',
+        completeness: 30,
+        experience: '[]',
+        education: '[]',
+        skills: '[]',
+        preferences: '{"roles":[],"locations":[],"comp":""}',
+        role: 'candidate',
+      };
+      _accessToken = 'mock_google_token';
+      localStorage.setItem('manju-access-token', _accessToken);
+      localStorage.setItem('manju-user-id', '888');
+      window.MJ.MJ_USER = mockUser;
+      window.MJ.MJ_PROFILE = mockUser;
+      return { accessToken: 'mock_google_token', refreshToken: 'mock_refresh', user: mockUser, isNewUser: true };
+    }
     try {
       const res = await fetch(`${MJ_API}/auth/google`, {
         method: 'POST',
@@ -255,6 +340,37 @@ window.MJ_api = {
   },
 
   linkedinLogin: async (idToken) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      const parts = idToken.split('|');
+      const email = parts[1] || 'linkedin.user@linkedin.com';
+      const name = parts[2] || 'LinkedIn User';
+      const mockUser = {
+        id: 777,
+        email,
+        name,
+        first: name.split(' ')[0] || '',
+        last: name.split(' ')[1] || '',
+        title: 'Alumnus / Member',
+        current: '',
+        institute: 'IIT Bombay',
+        instituteShort: 'IIT B',
+        batch: '2018',
+        location: 'Bengaluru',
+        avatarColor: '#0A66C2',
+        completeness: 30,
+        experience: '[]',
+        education: '[]',
+        skills: '[]',
+        preferences: '{"roles":[],"locations":[],"comp":""}',
+        role: 'candidate',
+      };
+      _accessToken = 'mock_linkedin_token';
+      localStorage.setItem('manju-access-token', _accessToken);
+      localStorage.setItem('manju-user-id', '777');
+      window.MJ.MJ_USER = mockUser;
+      window.MJ.MJ_PROFILE = mockUser;
+      return { accessToken: 'mock_linkedin_token', refreshToken: 'mock_refresh', user: mockUser, isNewUser: true };
+    }
     try {
       const res = await fetch(`${MJ_API}/auth/linkedin`, {
         method: 'POST',
@@ -285,29 +401,44 @@ window.MJ_api = {
     localStorage.removeItem('manju-refresh-token');
   },
 
-  saveJob:   (jobId) => fetch(`${MJ_API}/users/${getUserId()}/saved/${jobId}`,
-    { method: 'POST', headers: getAuthHeader() }
-  ).catch(e => { console.warn('[API] Save failed:', e); }),
+  saveJob:   (jobId) => {
+    if (!window.MJ || !window.MJ._fromApi) return Promise.resolve();
+    return fetch(`${MJ_API}/users/${getUserId()}/saved/${jobId}`,
+      { method: 'POST', headers: getAuthHeader() }
+    ).catch(e => { console.warn('[API] Save failed:', e); });
+  },
 
-  unsaveJob: (jobId) => fetch(`${MJ_API}/users/${getUserId()}/saved/${jobId}`,
-    { method: 'DELETE', headers: getAuthHeader() }
-  ).catch(e => { console.warn('[API] Unsave failed:', e); }),
+  unsaveJob: (jobId) => {
+    if (!window.MJ || !window.MJ._fromApi) return Promise.resolve();
+    return fetch(`${MJ_API}/users/${getUserId()}/saved/${jobId}`,
+      { method: 'DELETE', headers: getAuthHeader() }
+    ).catch(e => { console.warn('[API] Unsave failed:', e); });
+  },
 
-  apply: (jobId, coverNote, referrals) =>
-    fetch(`${MJ_API}/users/${getUserId()}/applications`, {
+  apply: (jobId, coverNote, referrals) => {
+    if (!window.MJ || !window.MJ._fromApi) return Promise.resolve();
+    return fetch(`${MJ_API}/users/${getUserId()}/applications`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
       body: JSON.stringify({ jobId, coverNote, referrals }),
-    }).catch(e => { console.warn('[API] Apply failed:', e); }),
+    }).catch(e => { console.warn('[API] Apply failed:', e); });
+  },
 
-  moveStage: (jobId, stage) =>
-    fetch(`${MJ_API}/users/${getUserId()}/applications/${jobId}`, {
+  moveStage: (jobId, stage) => {
+    if (!window.MJ || !window.MJ._fromApi) return Promise.resolve();
+    return fetch(`${MJ_API}/users/${getUserId()}/applications/${jobId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
       body: JSON.stringify({ stage }),
-    }).catch(e => { console.warn('[API] Move stage failed:', e); }),
+    }).catch(e => { console.warn('[API] Move stage failed:', e); });
+  },
 
   postJob: async (jobData) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      const mockNewJob = { id: 'j_mock_' + Date.now(), ...jobData, match: 0, alumni: 0, alumniInRole: 0, posted: 'just now' };
+      window.MJ.MJ_JOBS = [mockNewJob, ...(window.MJ.MJ_JOBS || [])];
+      return mockNewJob;
+    }
     try {
       const res = await fetch(`${MJ_API}/jobs`, {
         method: 'POST',
@@ -326,6 +457,9 @@ window.MJ_api = {
   },
 
   loadUserData: async (userId) => {
+    if (!window.MJ || !window.MJ._fromApi) {
+      return { saved: ['j2', 'j4', 'j7'], applications: {}, referralRequests: {}, profile: window.MJ?.MJ_USER || FALLBACK_USER };
+    }
     const headers = { ...getAuthHeader() };
     try {
       const [savedIds, apps, referrals, user] = await Promise.all([
