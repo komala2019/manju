@@ -4,7 +4,8 @@
 window.chatService = {
   async sendMessage(message, history = [], persona = null) {
     try {
-      const res = await fetch(`http://${window.location.hostname}:3002/api/chat`, {
+      const agentBase = window.MJ_AGENT_BASE || `http://${window.location.hostname}:3002`;
+      const res = await fetch(`${agentBase}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message, history, persona }),
@@ -201,6 +202,17 @@ function TestAgentRunner() {
 
 function ProtoApp() {
   const [t, setTweak] = useTweaks(PROTO_TWEAKS);
+  const [apiUrl, setApiUrl] = React.useState(window.MJ_API_BASE || '');
+  const [agentUrl, setAgentUrl] = React.useState(window.MJ_AGENT_BASE || '');
+
+  const saveUrls = () => {
+    localStorage.setItem('MJ_API_BASE', apiUrl.trim());
+    localStorage.setItem('MJ_AGENT_BASE', agentUrl.trim());
+    window.MJ_API_BASE = apiUrl.trim();
+    window.MJ_AGENT_BASE = agentUrl.trim();
+    alert('Connection settings saved! Reloading application...');
+    window.location.reload();
+  };
 
   return (
     <AppProvider>
@@ -210,6 +222,18 @@ function ProtoApp() {
         <TweakSection label="Theme"/>
         <TweakToggle label="Dark mode" value={t.dark} onChange={v=>setTweak('dark',v)}/>
         <TweakRadio label="Density" value={t.density} options={['compact','comfortable']} onChange={v=>setTweak('density',v)}/>
+        
+        <TweakSection label="Connection Settings"/>
+        <TweakRow label="Backend API URL">
+          <input type="text" className="twk-field" value={apiUrl} onChange={e => setApiUrl(e.target.value)} placeholder="http://localhost:5200" />
+        </TweakRow>
+        <TweakRow label="Agent Service URL">
+          <input type="text" className="twk-field" value={agentUrl} onChange={e => setAgentUrl(e.target.value)} placeholder="http://localhost:3002" />
+        </TweakRow>
+        <div style={{ marginTop: 6 }}>
+          <TweakButton label="Save Connections" onClick={saveUrls} />
+        </div>
+
         <TweakSection label="Automated Testing"/>
         <TweakButton label="Open Test Agent" onClick={() => window.dispatchEvent(new CustomEvent('open-test-agent'))}/>
         <TweakSection label="Demo"/>

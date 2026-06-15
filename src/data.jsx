@@ -1,7 +1,22 @@
 // src/data.jsx — Data layer: fetches from ManjuApi (localhost:5200) with hardcoded fallback
 
-window.MJ_API_BASE = `http://${window.location.hostname}:5200`;
-const MJ_API = `${window.MJ_API_BASE}/api`;
+window.MJ_API_BASE = localStorage.getItem('MJ_API_BASE') || (
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? `http://${window.location.hostname}:5200`
+    : ''
+);
+
+window.MJ_AGENT_BASE = localStorage.getItem('MJ_AGENT_BASE') || (
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? `http://${window.location.hostname}:3002`
+    : ''
+);
+
+const MJ_API = {
+  toString() {
+    return (window.MJ_API_BASE || `http://${window.location.hostname}:5200`) + '/api';
+  }
+};
 
 // Auth token management
 let _accessToken = localStorage.getItem('manju-access-token');
