@@ -122,9 +122,19 @@ function TweaksPanel({ title = 'Tweaks', children }) {
       if (t === '__activate_edit_mode') setOpen(true);
       else if (t === '__deactivate_edit_mode') setOpen(false);
     };
+    const onKey = (e) => {
+      // Toggle panel with Backtick (`) or Ctrl+M
+      if (e.key === '`' || (e.ctrlKey && e.key?.toLowerCase() === 'm')) {
+        setOpen(prev => !prev);
+      }
+    };
     window.addEventListener('message', onMsg);
+    window.addEventListener('keydown', onKey);
     window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-    return () => window.removeEventListener('message', onMsg);
+    return () => {
+      window.removeEventListener('message', onMsg);
+      window.removeEventListener('keydown', onKey);
+    };
   }, []);
 
   const dismiss = () => {
