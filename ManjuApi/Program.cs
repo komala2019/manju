@@ -66,18 +66,23 @@ builder.Services.AddScoped<EmailService>();
 builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
 
-// CORS configuration - restrict to allowed origins
+// CORS configuration - restrict to allowed origins (supports local dev and vercel domains)
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? new[]
 {
     "http://localhost:3000",
     "http://localhost:7821",
     "http://localhost:8080",
     "http://127.0.0.1:3000",
-    "http://127.0.0.1:7821"
+    "http://127.0.0.1:7821",
+    "https://manju-gold.vercel.app"
 };
 
 builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
-    p.WithOrigins(allowedOrigins)
+    p.SetIsOriginAllowed(origin =>
+    {
+        var host = new Uri(origin).Host;
+        return host == "localhost" || host == "127.0.0.1" || host.EndsWith(".vercel.app") || allowedOrigins.Contains(origin);
+    })
      .AllowAnyHeader()
      .AllowAnyMethod()
      .AllowCredentials()));
