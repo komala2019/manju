@@ -21,9 +21,18 @@ if (string.IsNullOrEmpty(jwtSecret))
     );
 }
 
-// SQLite via EF Core
-builder.Services.AddDbContext<ManjuDbContext>(opt =>
-    opt.UseSqlite("Data Source=manju.db"));
+// SQLite or PostgreSQL (Supabase) via EF Core
+var connectionString = builder.Configuration.GetConnectionString("SupabaseConnection");
+if (!string.IsNullOrEmpty(connectionString))
+{
+    builder.Services.AddDbContext<ManjuDbContext>(opt =>
+        opt.UseNpgsql(connectionString));
+}
+else
+{
+    builder.Services.AddDbContext<ManjuDbContext>(opt =>
+        opt.UseSqlite("Data Source=manju.db"));
+}
 
 // JWT service
 builder.Services.AddSingleton<JwtService>();
@@ -84,9 +93,12 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<ManjuDbContext>();
     db.Database.EnsureCreated();
 
-    // Schema migration: add Role/RecruiterCompany columns if missing (SQLite doesn't support IF NOT EXISTS)
-    try { db.Database.ExecuteSqlRaw("ALTER TABLE Users ADD COLUMN Role TEXT NOT NULL DEFAULT 'candidate'"); } catch { }
-    try { db.Database.ExecuteSqlRaw("ALTER TABLE Users ADD COLUMN RecruiterCompany TEXT"); } catch { }
+    // Schema migration: add Role/RecruiterCompany columns if missing (SQLite legacy fallback migration only)
+    if (db.Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+    {
+        try { db.Database.ExecuteSqlRaw("ALTER TABLE Users ADD COLUMN Role TEXT NOT NULL DEFAULT 'candidate'"); } catch { }
+        try { db.Database.ExecuteSqlRaw("ALTER TABLE Users ADD COLUMN RecruiterCompany TEXT"); } catch { }
+    }
 
     if (!db.Jobs.Any())
     {
