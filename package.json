@@ -1,0 +1,15 @@
+{
+  "name": "manju",
+  "version": "1.0.0",
+  "description": "Manju application - static frontend with Cloudflare Pages",
+  "main": "index.html",
+  "scripts": {
+    "build": "mkdir dist && copy index.html dist\\",
+    "deploy": "wrangler pages publish dist"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^2.0.0"
+  }
+}

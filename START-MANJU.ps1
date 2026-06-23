@@ -11,9 +11,8 @@ Start-Sleep -Seconds 2
 
 # 1. Start Backend API (port 5200)
 Write-Host "[1] Starting Backend API (port 5200)..." -ForegroundColor Green
-Push-Location "$projectRoot\ManjuApi"
-Start-Process dotnet -ArgumentList "run" -NoNewWindow -RedirectStandardOutput "$projectRoot\backend.log"
-Pop-Location
+# Backend start omitted (dotnet SDK not available)
+Write-Host "[1] Backend start skipped (dotnet missing)" -ForegroundColor Yellow
 Start-Sleep -Seconds 4
 
 # 2. Start Agent Service (port 3002)
@@ -25,8 +24,9 @@ Start-Sleep -Seconds 3
 
 # 3. Start Frontend Server (port 7821)
 Write-Host "[3] Starting Frontend Server (port 7821)..." -ForegroundColor Green
+# Use Node http-server instead of Python
 Push-Location $projectRoot
-Start-Process python -ArgumentList "-m http.server 7821" -NoNewWindow -RedirectStandardOutput "$projectRoot\frontend.log"
+Start-Process npx -ArgumentList "http-server -p 7821" -NoNewWindow -RedirectStandardOutput "$projectRoot\\frontend.log"
 Pop-Location
 Start-Sleep -Seconds 2
 

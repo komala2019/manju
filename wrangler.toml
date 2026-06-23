@@ -1,0 +1,14 @@
+name = "manju"
+account_id = "$CF_ACCOUNT_ID"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+[vars]
+FRONTEND_URL = "https://<your-project>.pages.dev"
+AGENT_API_URL = "https://<your-project>.pages.dev/api/chat"
+# Add any other needed variables here
+
+[[d1_databases]]
+binding = "DB"
+database_id = "<YOUR_D1_DATABASE_ID>"
+
